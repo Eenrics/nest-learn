@@ -1,4 +1,4 @@
-import { Controller, HostParam, Get } from '@nestjs/common';
+import { Controller, HostParam, Get, HttpException, HttpStatus } from '@nestjs/common';
 
 @Controller({ host: ':account.example.com' })
 export class AccountController {

@@ -1,7 +1,8 @@
-import { Controller, Get, Redirect, Query, Param, Post, Body, Delete } from '@nestjs/common';
+import { Controller, Get, Redirect, Query, Param, Post, Body, Delete, HttpException, HttpStatus, BadRequestException } from '@nestjs/common';
 import { CreateCatDto } from './dto/create-cat.dto'
 import { CatsService } from './cats.service';
 import { Cat } from './interfaces/cat.interface';
+import { ForbiddenException } from 'src/exceptions/forbidden.exception';
 
 @Controller('cats')
 export class CatsController {
@@ -10,6 +11,12 @@ export class CatsController {
     @Get()
     async findAll(): Promise<Cat[]> {
         return this.catsService.findAll()
+    }
+
+    @Get('/error')
+    throwError() {
+        throw new BadRequestException('Something bad happened', { cause: new Error(), description: 'Some error description' })
+        throw new ForbiddenException
     }
 
     @Get('red')
