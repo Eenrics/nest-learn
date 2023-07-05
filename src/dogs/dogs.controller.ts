@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Res, HttpStatus } from '@nestjs/common';
+import { Controller, Get, Post, Res, HttpStatus, ParseIntPipe, Param } from '@nestjs/common';
 import { Response } from 'express';
 
 @Controller('dogs')
@@ -12,4 +12,9 @@ export class DogsController {
   findAll(@Res() res: Response) {
      res.status(HttpStatus.OK).json([]);
   }
+
+  @Get(':id')
+async findOne(@Param('id', ParseIntPipe) id: number) {
+  return id;
+}
 }
