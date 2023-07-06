@@ -14,7 +14,7 @@ export class DogsController {
   }
 
   @Get(':id')
-async findOne(@Param('id', ParseIntPipe) id: number) {
-  return id;
-}
+  async findOne(@Param('id', ParseIntPipe) id: number) {
+    return id;
+  }
 }

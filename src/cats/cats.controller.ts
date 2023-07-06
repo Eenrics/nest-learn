@@ -2,7 +2,7 @@ import { Controller, Get, Redirect, Query, Param, Post, Body, Delete, HttpExcept
 import { CreateCatDto } from './dto/create-cat.dto'
 import { CatsService } from './cats.service';
 import { Cat } from './interfaces/cat.interface';
-import { ForbiddenException } from 'src/exceptions/forbidden.exception';
+import { ForbiddenException } from 'src/common/exceptions/forbidden.exception';
 
 @Controller('cats')
 export class CatsController {
